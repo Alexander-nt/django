@@ -1,0 +1,22 @@
+{% extends 'main/base.html' %}
+
+{% block title %}
+test
+{% endblock %}
+
+{% block content %}
+    <h1 class="text-center fw-bold " >Создать запись </h1>
+<div class=" container">
+    <form method="post">
+        {% csrf_token %}
+        {{ form.title }}<br>
+        {{ form.task }}<br>
+        {{ form.author_name}}<br>
+
+        <div class="d-grid gap-2">
+            <input type="checkbox" class="btn-check" id="btn-check" autocomplete="off">
+            <button class="btn btn-primary" for="btn-check" >Записать</button>
+        </div>
+    </form>
+</div>
+{% endblock %}

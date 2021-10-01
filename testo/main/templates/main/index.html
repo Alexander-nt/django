@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="ru">
+<body class=""></body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="icon" type="image/vnd.microsoft.icon" href="/favicon.ico">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Icons+two+tone" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open Sans">
+
+
+
+    <title>{% block title %}Home{% endblock %}</title>
+
+    {% load static %}
+    {# Load the tag library #}
+    {% load bootstrap5 %}
+    {# Load CSS and JavaScript #}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+    {# Display django.contrib.messages as Bootstrap alerts #}
+    {% bootstrap_messages %}
+
+{% load socialaccount %}
+
+
+{% if request.user.is_authenticated %}
+<style> body {font-family: 'Open Sans', serif;font-size: 18px;text-shadow: 4px 4px 4px #aaa;}</style>
+<nav class="navbar navbar-expand-lg navbar-light bg-light ">
+  <div class="container-fluid">
+    <a class=" navbar-brand" href="">[testo]</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDarkDropdown" aria-controls="navbarNavDarkDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse " id="navbarNavDarkDropdown">
+        <ul class="navbar-nav col-md-auto container ">
+        <li><a href="{% url 'home' %}" class="nav-link material-icons">home Главная</a></li>
+        <li><a href="{% url 'about' %}" class="nav-link material-icons">assignment Статьи</a></li>
+        <li><a href="{% url 'notes' %}" class="nav-link material-icons">description Заметки</a></li>
+        <li><a href="admin" class="nav-link material-icons">admin_panel_settings админка</a></li>
+        <li><a href="#" class="nav-link material-icons">adb FAQs</a></li>
+      </ul>
+{% if user.is_authenticated %}
+      <ul class="navbar-nav">
+        <li class="nav-item dropdown dropdown-menu-end">
+          <button class="btn btn-bd-light dropdown-toggle"  id="navbarDarkDropdownMenuLink"  data-bs-toggle="dropdown" aria-expanded="false" data-bs-display="static">
+              <span class="material-icons">face</span>
+          </button>
+
+          <ul class="dropdown-menu dropdown-menu-end " aria-labelledby="navbarDarkDropdownMenuLink">
+            <li><a class="dropdown-item" href="{% url 'user' %}">{{ user.first_name }} {{ user.last_name }}</a></li>
+            <li><a class="dropdown-item" href="#">Another action</a></li>
+              <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="{% url 'logout' %}?next={{request.path}}">Выйти</a></li>
+              {% else %}
+            <li><a class="dropdown-item" href="{% url 'login' %}?next={{request.path}}">Войти</a></li>
+              {% endif %}
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+        {% else %}
+
+        <div class="text-center link-danger">
+            <p>Вход на сайт не выполнен. <a href="{% url 'login' %}" class="link-danger">перейдти на страницу авторизации.</a></p>
+        </div>
+        {% endif %}
+    <div class="">
+            {% block content %}
+
+
+    <div style="font-family: 'Open Sans', serif; text-shadow: 4px 4px 4px #aaa; font-size: 48px">
+
+        <div class="shadow-lg p-3 mb-5 bg-body rounded text-center">Гланая страница <br>
+            <span class="material-icons 48px">
+                accessibility_new
+                language
+                face
+                visibility
+                fingerprint
+            </span>
+
+        </div>
+        <head>
+    </head>
+
+
+</div>
+
+
+        {% endblock %}
+
+
+
+</div>
+</html>

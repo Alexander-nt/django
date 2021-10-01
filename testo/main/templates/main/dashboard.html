@@ -1,0 +1,18 @@
+{% extends "main/base.html" %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+<div class=" text-center">
+    <h1>Dashboard</h1>
+    {% if user.is_authenticated %}
+    <p>Мы рады вашему возвращению <br> <a style="font-size: 10rem;">{{ user.first_name }} {{ user.last_name }}!!!</a></p>
+    {% else %}
+        <p>You are not logged in.</p>
+        <a href="{% url 'login' %}">Log In</a>
+      {% endif %}
+    <i class="bi bi-emoji-smile" style="font-size: 20rem;"></i>
+
+    </div>
+
+{% endblock %}

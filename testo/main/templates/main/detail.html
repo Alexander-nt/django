@@ -1,0 +1,77 @@
+{% extends 'main/base.html' %}
+
+{% block title %}{{article.article_title}}{% endblock %}
+{% block content %}<br>
+<style>
+    p.cite { /* Абзац с классом cite */
+
+    border-left: 1px solid navy; /* Граница слева от текста */
+
+    }
+  </style>
+<div style="font-size: 48px" class="shadow-lg p-3 mb-5 bg-body rounded text-center">{{article.article_title}}</div>
+<div class="container">
+<div class="card text-dark">
+
+  <div class="card-body">
+    <blockquote class="blockquote mb-0">
+
+
+          <p>{{article.article_text}}</p>
+
+
+        <hr>
+      <footer class="blockquote-footer">
+          <cite title="Source Title">
+              автор статьи: {{article.user}}
+              /
+              {{article.pub_date}}
+
+          </cite>
+      </footer>
+    </blockquote>
+  </div>
+</div>
+
+
+<hr>
+
+{% if latest_comments_list %}
+    {% for c in latest_comments_list %}
+        <p>
+            <hr>
+            <strong>{{c.author_name}}</strong>
+            <p>{{c.comment_text}}</p>
+            <cite title="Source Title">
+                {{c.pub_date}}
+                </cite>
+        </p>
+    {% endfor %}
+
+{% else %}
+Коментарий не найден!
+{% endif %}
+<hr>
+
+<form action="{% url 'leave_comment' article.id %}" method="POST">
+
+    {% csrf_token %}
+
+
+ <div class="form-floating mb-3 text-dark">
+  <input type="text" class="form-control" id="floatingInput" required placeholder="Ваше имя" name="name" >
+  <label for="floatingInput">Ваше имя</label>
+</div>
+<div class="form-floating text-dark">
+  <textarea name="text" class="form-control" required="" placeholder="Текст комментария" id="floatingTextarea"></textarea>
+  <label for="floatingTextarea">Текст комментария</label><br>
+</div>
+
+
+<div class="d-grid gap-2 col-6 mx-auto">
+  <button class="btn btn-primary">Оставить комментарий</button>
+
+</div>
+</form>
+</div>
+{% endblock %}
