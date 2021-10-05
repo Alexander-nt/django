@@ -4,18 +4,20 @@
 {% block content %}
 
 <div style="font-size: 40px" class="shadow-lg p-3 mb-5 bg-body rounded text-center" >Страница статей<br></div>
+<div class="d-grid gap-2 col-1 mx-auto">
+  <a class="btn btn-primary" href="{% url 'vvod' %}" role="button">Добавить статью</a>
+</div>
 
 {% if latest_articles_list %} {% for a in latest_articles_list %}
-<div class="container">
-<ul>
-         <a href="{% url 'detail' a.id %}">-{{a.article_title}}</a>
-</ul>
+<div class="mx-auto">
+
+    <a href="{% url 'detail' a.id %}">{{a.article_title}}</a>
 {% endfor %}
 
 {% else %}
 нет статей )=
 {% endif %}
 
-<a class="btn btn-primary" href="{% url 'vvod' %}" role="button">Добавить статью</a>
+
 </div>
 {% endblock %}

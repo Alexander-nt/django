@@ -46,6 +46,8 @@
         <li><a href="admin" class="nav-link material-icons">admin_panel_settings админка</a></li>
         <li><a href="#" class="nav-link material-icons">adb FAQs</a></li>
       </ul>
+        <span class="badge bg-secondary">{% now " j.n.y H:i" %}</span>
+
 {% if user.is_authenticated %}
       <ul class="navbar-nav">
         <li class="nav-item dropdown dropdown-menu-end">
@@ -74,7 +76,7 @@
             <p>Вход на сайт не выполнен. <a href="{% url 'login' %}" class="link-danger">перейдти на страницу авторизации.</a></p>
         </div>
         {% endif %}
-    <div class="">
+    <div class="card shadow">
             {% block content %}
 
 

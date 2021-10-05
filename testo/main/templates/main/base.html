@@ -13,8 +13,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Open Sans" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="static/styles/main.css">
-   	 <link rel="stylesheet" type="text/css" href="static/styles/dark.css" id="theme-link">
+
 
     <title>{% block title %}{% endblock %}</title>
 </head>
@@ -52,9 +51,7 @@
       <ul class="navbar-nav">
         <li class="nav-item dropdown dropdown-menu-end">
           <button class="btn btn-bd-light dropdown-toggle"  id="navbarDarkDropdownMenuLink"  data-bs-toggle="dropdown" aria-expanded="false" data-bs-display="static">
-              <span class="material-icons">
-face
-</span>
+              <span class="material-icons">face</span>
           </button>
 
           <ul class="dropdown-menu dropdown-menu-end " aria-labelledby="navbarDarkDropdownMenuLink">
@@ -85,9 +82,9 @@ face
 
 
             {% endblock %}
-        {% else %}
 
-<a class=" container" href="{% url 'home' %}">Венутся на главную страницу.</a>
+        {% else %}
+        <a class=" container" href="{% url 'home' %}">Венутся на главную страницу.</a>
         <br><br><br>
             <div class="card text-center container" style="width: 18rem;">
               <ul class="list-group list-group-flush text-dark">
@@ -96,10 +93,12 @@ face
                 <li class="list-group-item"><a href="{% url 'login' %}">Вход с логином и паролем</a></li>
                 <li class="list-group-item"><a href="{% url 'login' %}">Сброс пароля</a></li>
               </ul>
+                <ul class="socialaccount_providers">
+                    <p>Войти через аккаунт
+                      <a title="Google" class="socialaccount_provider google" href="/accounts/google/login/?process=login">Google<span class="material-icons">android</span></a>
+                    </p>
+                </ul>
             </div>
-
-        
-
         {% endif %}
     </div>
 </html>
