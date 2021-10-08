@@ -76,32 +76,19 @@
             <p>Вход на сайт не выполнен. <a href="{% url 'login' %}" class="link-danger">перейдти на страницу авторизации.</a></p>
         </div>
         {% endif %}
+
+
     <div class="card shadow ">
-            {% block content %}
-
-
-    <div style="font-family: 'Open Sans', serif; text-shadow: 4px 4px 4px #aaa; font-size: 48px">
-
-        <div class="shadow-lg p-3 mb-5 bg-body rounded text-center">Гланая страница <br>
-            <span class="material-icons 48px">
-                accessibility_new
-                language
-                face
-                visibility
-                fingerprint
-            </span>
-
+        <div style="font-family: 'Open Sans', serif; text-shadow: 4px 4px 4px #aaa; font-size: 48px">
+            <div class="shadow-lg p-3 mb-5 bg-body rounded text-center">Гланая страница <br>
+                <span class="material-icons 48px">
+                    accessibility_new
+                    language
+                    face
+                    visibility
+                    fingerprint
+                </span>
+            </div>
         </div>
-        <head>
-    </head>
-
-
-</div>
-
-
-        {% endblock %}
-
-
-
-</div>
+    </div>
 </html>

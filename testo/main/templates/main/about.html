@@ -1,23 +1,26 @@
 {% extends 'main/base.html' %}
 {% block title %}Статьи{% endblock %}
-
+{% block list %}Страница статей{% endblock %}
+{% block button %}<a class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored" href="{% url 'vvod' %}" role="button">Добавить статью</a> {% endblock %}
 {% block content %}
 
-<div style="font-size: 40px" class="shadow-lg p-3 mb-5 bg-body rounded text-center" >Страница статей<br></div>
-<div class="d-grid gap-2 col-1 mx-auto">
-  <a class="btn btn-primary" href="{% url 'vvod' %}" role="button">Добавить статью</a>
-</div>
+
 
 {% if latest_articles_list %} {% for a in latest_articles_list %}
-<div class="mx-auto">
+<div class="text-center">
 
     <a href="{% url 'detail' a.id %}">{{a.article_title}}</a>
-{% endfor %}
+    {% endfor %}
 
-{% else %}
-нет статей )=
-{% endif %}
+    {% else %}
+    нет статей )=
+    {% endif %}
 
 
 </div>
+
 {% endblock %}
+
+<span class="ripple">
+                  <span class="ripple__circle ripple__circle--white"></span>
+                </span>

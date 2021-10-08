@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="ru">
-<body class=""></body>
+<body class="card shadow"></body>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
@@ -13,7 +13,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Open Sans" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
-
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+<script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
 
     <title>{% block title %}{% endblock %}</title>
 </head>
@@ -27,11 +29,10 @@
     {% bootstrap_messages %}
 {% if request.user.is_authenticated %}
 <style> body {font-family: 'Open Sans', serif;font-size: 18px;text-shadow: 4px 4px 4px #aaa;}</style>
-<nav class="navbar navbar-expand-lg navbar-light bg-light ">
+<nav class="navbar navbar-expand-lg navbar-light  ">
   <div class="container-fluid">
     <a class=" navbar-brand" href="">[testo]</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDarkDropdown" aria-controls="navbarNavDarkDropdown" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
     </button>
 
 
@@ -71,18 +72,24 @@
 
 
 
+    <!-- Блок с названием страниц -->
+    <div class="card shadow ">
+        <div style="font-family: 'Open Sans', serif; text-shadow: 4px 4px 4px #aaa; font-size: 48px">
+            <div class="shadow-lg p-3 mb-5 bg-body rounded text-center">
+                {% block list %} {% endblock %}
+            </div>
+        </div>
 
-
-
-
-
-    <div class="card shadow">
-            {% block content %}
-
-
-
-            {% endblock %}
-
+    <!-- Блок для кнопки -->
+    <div class="d-grid  col-2 mx-auto">
+    {% block button %} {% endblock %}
+    </div>
+<br>
+    <!-- Блок страниц -->
+    <body class="card shadow" style="">
+    {% block content %} {% endblock %}
+    </body>
+    <!-- Если не авторизован. предложит пройти регистрацию -->
         {% else %}
         <a class=" container" href="{% url 'home' %}">Венутся на главную страницу.</a>
         <br><br><br>
@@ -100,5 +107,5 @@
                 </ul>
             </div>
         {% endif %}
-    </div>
+</div>
 </html>

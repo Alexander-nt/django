@@ -2,14 +2,14 @@
 
 {% block title %}{{ title }}{% endblock %}
 
-
-
+{% block list %}Страница статей{% endblock %}
+{% block button %}<a class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored" href="{% url 'test' %}" role="button">Добавить заметку</a> {% endblock %}
 {% block content %}
 
-<div style="font-size: 40px" class="shadow-lg p-3 mb-5 bg-body rounded text-center" >Страница заметок <a class="btn btn-primary" href="{% url 'test' %}" role="button">Добавить заметку</a><br></div>
 
 
-<div class="card row row-cols-1 row-cols-md-4 g-4 container">
+
+<div class=" row row-cols-1 row-cols-md-4 g-4 mx-auto">
     {% for el in tasks %}
 
         <div class="col ">
@@ -28,6 +28,6 @@
 
     {% endfor %}
 </div>
-            <br>
+
 
 {% endblock %}
